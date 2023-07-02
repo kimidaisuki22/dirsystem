@@ -19,7 +19,7 @@ target_link_libraries(example dirsystem)
 
 include(GNUInstallDirs)
 install(TARGETS dirsystem)
-install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR})
+install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 include(CPack)
     
 endif()
