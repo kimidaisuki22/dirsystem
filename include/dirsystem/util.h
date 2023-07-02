@@ -44,7 +44,7 @@ template <typename T, typename Func> T then(T elem, Func f) {
 }
 
 inline dirsystem::Dir concat(dirsystem::Dir parent, dirsystem::Dir child) {
-  return parent + "/" + child;
+  return parent  / child;
 }
 
 template <typename T>

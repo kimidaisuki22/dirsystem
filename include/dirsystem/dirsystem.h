@@ -1,9 +1,10 @@
 #pragma once
 
+#include <filesystem>
 #include <optional>
 #include <string>
 namespace dirsystem {
-using Dir = std::string;
+using Dir = std::filesystem::path;
 
 bool has_home();
 
