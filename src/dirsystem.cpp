@@ -19,4 +19,7 @@ Dir config() {
   return choose_env_with_fall_back("XDG_CONFIG_HOME", ".config").value();
 }
 std::optional<Dir> runtime() { return env("XDG_RUNTIME_DIR"); }
+Dir download() {
+  return choose_env_with_fall_back("XDG_DOWNLOAD_DIR", "Downloads").value();
+}
 } // namespace dirsystem

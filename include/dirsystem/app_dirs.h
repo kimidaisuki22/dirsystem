@@ -14,6 +14,7 @@ public:
   const Dir &cache() const;
   const Dir &state() const;
   const Dir &runtime() const;
+  const Dir &download() const;
 
 private:
   Dir home_;
@@ -22,5 +23,6 @@ private:
   Dir cache_;
   Dir state_;
   Dir runtime_;
+  Dir download_;
 };
 } // namespace dirsystem

@@ -15,4 +15,6 @@ Dir cache();
 Dir state();
 std::optional<Dir> runtime();
 
+Dir download();
+
 } // namespace dirsystem

@@ -17,6 +17,7 @@ App_dirs::App_dirs(std::string app_name, bool need_run_dir) {
       run.value(); // throw exception.
     }
   }
+  download_ = concat(dirsystem::download(), app_name);
 }
 const Dir &App_dirs::runtime() const { return runtime_; }
 const Dir &App_dirs::state() const { return state_; }
@@ -24,4 +25,5 @@ const Dir &App_dirs::cache() const { return cache_; }
 const Dir &App_dirs::data() const { return data_; }
 const Dir &App_dirs::config() const { return config_; }
 const Dir &App_dirs::home() const { return home_; }
+const Dir &App_dirs::download() const { return download_; }
 } // namespace dirsystem

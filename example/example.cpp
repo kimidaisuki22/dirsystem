@@ -12,6 +12,7 @@ int main() {
   PrintL(dirsystem::data());
   PrintL(dirsystem::state());
   PrintL(dirsystem::runtime().value());
+  PrintL(dirsystem::download());
 
   dirsystem::App_dirs app_dir{"fun"};
   PrintL(app_dir.home());
@@ -20,4 +21,5 @@ int main() {
   PrintL(app_dir.data());
   PrintL(app_dir.state());
   PrintL(app_dir.runtime());
+  PrintL(app_dir.download());
 }
