@@ -7,7 +7,7 @@ bool has_home() { return env("HOME").has_value(); }
 
 Dir home() { return env("HOME").value(); }
 Dir state() {
-  return choose_env_with_fall_back("SDG_STATE_HOME", ".local/state").value();
+  return choose_env_with_fall_back("XDG_STATE_HOME", ".local/state").value();
 }
 Dir cache() {
   return choose_env_with_fall_back("XDG_CACHE_HOME", ".cache").value();
