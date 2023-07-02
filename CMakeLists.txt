@@ -9,17 +9,29 @@ enable_testing()
 
 
 add_library(dirsystem src/dirsystem.cpp src/app_dirs.cpp)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-target_include_directories(dirsystem PUBLIC include)
-
+target_include_directories(dirsystem PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
 if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
 
 add_executable(example example/example.cpp)
 target_link_libraries(example dirsystem)
 
-include(GNUInstallDirs)
-install(TARGETS dirsystem)
-install(DIRECTORY include/dirsystem DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 include(CPack)
+include(GNUInstallDirs)
+install(TARGETS dirsystem
+    EXPORT dirsystem
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION bin
+)
+install(EXPORT dirsystem
+    FILE dirsystemConfig.cmake
+    NAMESPACE dirsystem::
+    DESTINATION share/dirsystem
+)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 endif()
