@@ -1,4 +1,4 @@
-#ifdef  WIN32
+#ifdef  _WIN32
 #include "dirsystem/dirsystem.h"
 #include "dirsystem/util.h"
 #include <windows.h>
