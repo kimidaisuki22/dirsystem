@@ -16,8 +16,13 @@ target_include_directories(dirsystem PUBLIC
     $<INSTALL_INTERFACE:include>)
 if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
 
+option(DIRSYSTEM_BUILD_EXAMPLE "build example for dirsystem" ON)
+
+if(${DIRSYSTEM_BUILD_EXAMPLE})
 add_executable(example example/example.cpp)
 target_link_libraries(example dirsystem)
+endif()
+
 
 include(CPack)
 include(GNUInstallDirs)
