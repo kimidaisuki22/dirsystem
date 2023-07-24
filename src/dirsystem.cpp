@@ -7,6 +7,8 @@
 #include <optional>
 #include <windows.h>
 
+#pragma warning(disable : 4996)
+
 namespace dirsystem {
 
 bool has_home() {
@@ -61,7 +63,7 @@ std::optional<Dir> runtime() {
   // There is no perfect equivalent for this in Windows
   // but the closest might be the Temp folder
   PWSTR path = NULL;
-  if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_Profile, 0, NULL, &path))) {
+  if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_LocalAppDataLow, 0, NULL, &path))) {
     Dir result = path;
     CoTaskMemFree(path);
     return result;
