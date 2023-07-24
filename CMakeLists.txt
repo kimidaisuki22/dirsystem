@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(dirsystem VERSION 0.0.1)
+project(dirsystem VERSION 0.0.2)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
