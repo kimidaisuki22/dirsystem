@@ -8,8 +8,8 @@ include(CTest)
 enable_testing()
 
 
-add_library(dirsystem src/dirsystem.cpp src/app_dirs.cpp)
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+add_library(dirsystem STATIC src/dirsystem.cpp src/app_dirs.cpp src/portable_app_dirs.cpp src/plain_dirs.cpp)
+# set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 target_include_directories(dirsystem PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

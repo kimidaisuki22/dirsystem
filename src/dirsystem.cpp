@@ -1,9 +1,11 @@
-#ifdef  _WIN32
+#include "dirsystem/plain_dirs.h"
+#include "dirsystem/portable_app_dirs.h"
+#ifdef _WIN32
 #include "dirsystem/dirsystem.h"
 #include "dirsystem/util.h"
-#include <windows.h>
 #include <Shlobj.h>
 #include <optional>
+#include <windows.h>
 
 namespace dirsystem {
 
@@ -80,8 +82,8 @@ Dir download() {
 #else
 
 #include "dirsystem/dirsystem.h"
-#include <optional>
 #include "dirsystem/util.h"
+#include <optional>
 
 namespace dirsystem {
 bool has_home() { return env("HOME").has_value(); }
@@ -103,5 +105,25 @@ std::optional<Dir> runtime() { return env("XDG_RUNTIME_DIR"); }
 Dir download() {
   return choose_env_with_fall_back("XDG_DOWNLOAD_DIR", "Downloads").value();
 }
+
 } // namespace dirsystem
 #endif
+
+namespace dirsystem {
+
+std::shared_ptr<Dirs>
+get_portable_dirs_or_normal(std::filesystem::path current_path,
+                            std::string app_name, bool *is_portable) {
+  auto portable_dirs = std::make_shared<Portable_dirs>(current_path, app_name);
+  if (portable_dirs && portable_dirs->is_portable()) {
+    if (is_portable) {
+      *is_portable = portable_dirs->is_portable();
+    }
+    return portable_dirs;
+  }
+  if (is_portable) {
+    *is_portable = false;
+  }
+  return std::make_shared<Plain_dirs>(app_name);
+}
+} // namespace dirsystem
