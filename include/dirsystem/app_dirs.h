@@ -5,8 +5,7 @@
 namespace dirsystem {
 class App_dirs {
 public:
-  App_dirs(std::string app_name,
-           bool need_run_dir = true);
+  App_dirs(std::string app_name);
 
   const Dir &home() const;
   const Dir &config() const;

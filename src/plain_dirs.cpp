@@ -10,8 +10,8 @@ dirsystem::Plain_dirs::Plain_dirs(Dir home, Dir config, Dir data, Dir cache,
   runtime_ = runtime;
   download_ = download;
 }
-dirsystem::Plain_dirs::Plain_dirs(std::string app_name, bool need_run_dir) {
-  dirsystem::App_dirs app_dirs(app_name, need_run_dir);
+dirsystem::Plain_dirs::Plain_dirs(std::string app_name) {
+  dirsystem::App_dirs app_dirs(app_name);
   home_ = app_dirs.home();
   config_ = app_dirs.config();
   data_ = app_dirs.data();

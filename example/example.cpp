@@ -25,7 +25,9 @@ int main() {
   PrintL(dirsystem::config());
   PrintL(dirsystem::data());
   PrintL(dirsystem::state());
-  PrintL(dirsystem::runtime().value());
+  std::string runtime =
+      dirsystem::runtime() ? dirsystem::runtime().value().string() : "no runtime.";
+  PrintL(runtime);
   PrintL(dirsystem::download());
 
   dirsystem::App_dirs app_dir{"fun"};

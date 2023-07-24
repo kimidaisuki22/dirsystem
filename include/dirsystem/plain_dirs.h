@@ -7,7 +7,7 @@ public:
   Plain_dirs();
   Plain_dirs(Dir home, Dir config, Dir data, Dir cache, Dir state, Dir runtime,
              Dir download);
-  Plain_dirs(std::string app_name, bool need_run_dir = false);
+  Plain_dirs(std::string app_name);
   const Dir &home() const override { return home_; }
   const Dir &config() const override { return config_; }
   const Dir &data() const override { return data_; }

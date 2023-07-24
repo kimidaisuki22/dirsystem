@@ -4,7 +4,7 @@
 #include <cassert>
 namespace dirsystem {
 
-App_dirs::App_dirs(std::string app_name, bool need_run_dir) {
+App_dirs::App_dirs(std::string app_name) {
 
   home_ = dirsystem::home();
   config_ = concat(dirsystem::config(), app_name);
@@ -14,11 +14,11 @@ App_dirs::App_dirs(std::string app_name, bool need_run_dir) {
   if (auto run = dirsystem::runtime(); run) {
     runtime_ = concat(*run, app_name);
   } else {
-    // if (need_run_dir) {
-    //   runtime_ = concat(run.value(), app_name); // throw exception.
-    // }
-    runtime_ = concat(dirsystem::cache(), app_name+"_run");
-    assert(false);
+
+    // assert(false);
+    // runtime_ = concat(run.value(), app_name); // throw exception.
+
+    runtime_ = concat(dirsystem::cache(), app_name + "_run");
   }
   download_ = concat(dirsystem::download(), app_name);
 }
