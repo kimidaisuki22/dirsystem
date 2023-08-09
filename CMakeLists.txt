@@ -32,10 +32,11 @@ install(TARGETS dirsystem
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION  ${CMAKE_INSTALL_BINDIR}
 )
+ set(export_dest_dir "${CMAKE_INSTALL_LIBDIR}/cmake/dirsystem")
 install(EXPORT dirsystem
     FILE dirsystemConfig.cmake
     NAMESPACE dirsystem::
-    DESTINATION share/dirsystem
+    DESTINATION ${export_dest_dir}
 )
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
