@@ -4,13 +4,7 @@
 #include <optional>
 namespace dirsystem {
 
-template <typename T> std::optional<dirsystem::Dir> env(const T &elem) {
-  auto c_str = getenv(elem);
-  if (c_str) {
-    return c_str;
-  }
-  return {};
-}
+std::optional<dirsystem::Dir> env(const char *elem);
 
 template <typename T, typename... Optionals>
 auto choose(const T &op, const Optionals &...ops) {
@@ -43,9 +37,7 @@ template <typename T, typename Func> T then(T elem, Func f) {
   }
 }
 
-inline dirsystem::Dir concat(dirsystem::Dir parent, dirsystem::Dir child) {
-  return parent  / child;
-}
+dirsystem::Dir concat(dirsystem::Dir parent, dirsystem::Dir child);
 
 template <typename T>
 std::optional<dirsystem::Dir>
